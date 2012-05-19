@@ -1,0 +1,11 @@
+This is a console application that uses the `iching` library to perform a
+reading of the I Ching.
+
+To use it, build the package with `go build` and run the resulting
+`iching_console` program from the terminal. You will be asked a question, then
+the program will randomly generate, using the three-coin method, six lines that
+form a hexagram. If any of the lines are "changing," the program will print the
+hexagram they are changing into.
+
+You will also be given a couple of links to well-known translations of the text
+pertaining to both the current and changing hexagram.
