@@ -3,7 +3,6 @@ package main
 import (
         "fmt"
         "github.com/abrookins/go_iching"
-        "os"
 )
 
 // reportHexagram prints details about a hexagram.
@@ -14,7 +13,10 @@ func reportHexagram(hexagram *iching.Hexagram) {
 }
 
 func main() {
-        reading := iching.GetReading(os.Args[0])
+        var question string
+        fmt.Println("What is your question for the oracle?\n")
+        fmt.Scanln(&question)
+        reading := iching.GetReading(question)
 
         fmt.Printf("Lines: %v\n", reading.Lines)
         reportHexagram(reading.Hexagram)
