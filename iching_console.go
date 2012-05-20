@@ -7,9 +7,13 @@ import (
 
 // reportHexagram prints details about a hexagram.
 func reportHexagram(hexagram *iching.Hexagram) {
-        fmt.Printf("#%v: %v (%v)\n", hexagram.Num, hexagram.Name, hexagram.Character)
-        fmt.Println(hexagram.GetWillhelmUrl())
-        fmt.Println(hexagram.GetLeggeUrl())
+        fmt.Printf("Result: %v (%v, #%v)\n\nDescription:\n%v\n\nTranslations:\n", 
+                   hexagram.Name, hexagram.Character, hexagram.Num,
+                   hexagram.Description)
+
+        for _, tr := range hexagram.TranslationUrls {
+                fmt.Println(tr)
+        }
 }
 
 func main() {
@@ -18,7 +22,8 @@ func main() {
         fmt.Scanln(&question)
         reading := iching.GetReading(question)
 
-        fmt.Printf("Lines: %v\n", reading.Lines)
+        fmt.Printf("----------------------------------\n\nLines: %v\n\n", 
+                   reading.Lines)
         reportHexagram(reading.Hexagram)
 
         if reading.NextHexagram != reading.Hexagram {
